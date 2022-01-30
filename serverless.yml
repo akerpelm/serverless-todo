@@ -1,0 +1,33 @@
+org: akerpelm
+app: serverless-test-api-v2
+service: serverless-rest-api-project
+frameworkVersion: "2 || 3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: "20201221"
+  regions: us-east-2
+
+functions:
+  hello:
+    handler: src/hello.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+# Create table through infrastructure as code approach
+resources:
+  Resources: # CloudFormation to define our resources
+    TodoTable: # assign type
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: TodoTable
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions: #define attribute for p_key
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id # attribute to p_key.
+            KeyType: HASH
