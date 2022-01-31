@@ -10,6 +10,11 @@ authorName: 'Serverless, inc.'
 authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 -->
 
+# Commands
+
+- `sls deploy --verbose`
+- `sls dploy function -f <functionToUpdate>`
+
 # Serverless Framework Node HTTP API on AWS
 
 This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.
@@ -95,7 +100,6 @@ Which should result in response similar to the following:
 }
 ```
 
-
 Alternatively, it is also possible to emulate API Gateway and Lambda locally by using `serverless-offline` plugin. In order to do that, execute the following command:
 
 ```bash
@@ -111,5 +115,7 @@ serverless offline
 ```
 
 To learn more about the capabilities of `serverless-offline`, please refer to its [GitHub repository](https://github.com/dherault/serverless-offline).
+
 # serverless-todo
+
 # serverless-todo

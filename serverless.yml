@@ -7,15 +7,39 @@ provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: "20201221"
-  regions: us-east-2
+  region: us-east-1
+  iamRoleStatements: # all Lambda functoins can perform all actions.
+    - Effect: Allow
+      Action:
+        - dynamodb:* #not best practice likely
+      Resource:
+        - arn:aws:dynamodb:us-east-1:498741492800:table/TodoTable
 
 functions:
-  hello:
-    handler: src/hello.handler
+  addTodo:
+    handler: src/addTodo.handler
     events:
       - httpApi:
-          path: /
+          path: /todos
+          method: post
+  fetchTodos:
+    handler: src/fetchTodos.handler
+    events:
+      - httpApi:
+          path: /todos
           method: get
+  fetchTodo:
+    handler: src/fetchTodo.handler
+    events:
+      - httpApi:
+          path: /todos/{id}
+          method: get
+  updateTodo:
+    handler: src/updateTodo.handler
+    events:
+      - httpApi:
+          path: /todos/{id}
+          method: patch
 
 # Create table through infrastructure as code approach
 resources:
