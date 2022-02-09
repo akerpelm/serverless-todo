@@ -13,7 +13,8 @@ authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 # Commands
 
 - `sls deploy --verbose`
-- `sls dploy function -f <functionToUpdate>`
+- `sls deploy function -f <functionToUpdate>`
+- `sls deploy --stage <stageName>`
 
 # Serverless Framework Node HTTP API on AWS
 
